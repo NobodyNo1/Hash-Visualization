@@ -106,6 +106,7 @@ fn visualize(hash: u16) {
     generate_image(&img);
 }
 
+use std::ops::Add;
 use std::path::Path;
 use std::fs::File;
 use std::io::prelude::*;
@@ -138,6 +139,8 @@ fn generate_image(img: &Image) {
 
     let color = format!("{} {} {}", rbg[0], rbg[1], rbg[2]);
     println!("color : {}", color);
+    let white_color = "255 255 255".to_string();
+    let mut file_content: String = String::new();
 
     let scale = output_image_size/5;
     for row in 0..output_image_size {
@@ -146,11 +149,13 @@ fn generate_image(img: &Image) {
             let source_col = col/scale;
             let source_idx = (source_row*5)+source_col;
             if img.data[source_idx] == false {
-                file.write("255 255 255".as_bytes()).unwrap();
+                file_content = file_content + white_color.as_str();
             } else {
-                file.write(color.as_bytes()).unwrap();
+                file_content = file_content + color.as_str();
             }
-            file.write("\n".as_bytes()).unwrap();
+            file_content = file_content + "\n";
         }
     }
+    file.write(file_content.as_bytes()).unwrap();
+
 }
