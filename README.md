@@ -1,7 +1,7 @@
 # Hash visualization
 
 > [!WARNING]
-> Project created for practicing in rust, code might not meet good rust standarts!
+> This project was created for practicing Rust. The code might not meet good Rust standards!
 
 
 ## Content
@@ -44,6 +44,7 @@ Then using u16 we just draw it in following fashion:
             R: abcde G: efjigk B: lmnop
 
 
-TODO:
+## TODO
+
 - [ ] Stack Overflow's (Gravatars) or jdenticon 
 - [ ] Blur hash
